@@ -1,9 +1,9 @@
-name: 'Algolia Uploader'
-description: 'Upload your algolia uploader.'
+name: 'Hugo Algolia Uploader'
+description: 'Upload your hugo algolia uploader.'
 
 branding:
   icon: upload-cloud
-  color: gray-dark
+  color: purple
 
 inputs:
   app_id:
@@ -15,9 +15,21 @@ inputs:
   index_name:
     description: 'Index name of Algolia'
     required: true
-  index_file_path:
-    description: 'Index file path'
-    required: true
+  index_name_separator:
+    description: 'Index name separator of Algolia'
+    default: "_"
+    required: false
+  index_file_directory:
+    description: 'Index file directory'
+    default: "public"
+    required: false
+  index_file_name:
+    description: 'Index file name'
+    default: "index.json"
+    required: false
+  index_languages:
+    description: 'Index i18next language codes'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
