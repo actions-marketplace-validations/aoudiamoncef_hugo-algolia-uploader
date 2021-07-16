@@ -13,9 +13,10 @@ github_workspace = os.environ.get("GITHUB_WORKSPACE")
 
 
 def upload(path, index):
-    with open(path) as f:
-        records = json.load(f)
-        index.save_objects(records, {'autoGenerateObjectIDIfNotExist': True})
+    if os.path.isfile(path):
+        with open(path) as f:
+            records = json.load(f)
+            index.save_objects(records, {'autoGenerateObjectIDIfNotExist': True})
 
 
 upload("{}/{}/{}".format(github_workspace, index_file_directory, index_file_name), client.init_index(index_name))
